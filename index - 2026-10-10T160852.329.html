@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E7ECF2">
+<title>Le ou la ? Le genre des noms du métier</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FFFFFF'/%3E%3Crect x='0' y='16' width='64' height='3' fill='%23E08585'/%3E%3Ctext x='8' y='50' font-family='Georgia,serif' font-weight='700' font-size='26' fill='%231D58AC'%3Ele%3C/text%3E%3Ctext x='34' y='50' font-family='Georgia,serif' font-weight='700' font-size='26' fill='%23B4470F'%3Ela%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<style>
+:root{
+  --paper:#E7ECF2;--card:#FFFFFF;--ink:#16203A;--ink-soft:#56627A;
+  --rule:#D9E0EA;--rule-strong:#B8C4D5;--line:#E2EAF5;--head:#E08585;
+  --m:#1D58AC;--f:#B4470F;--on-g:#FFFFFF;--m-tint:#E6EEFA;--f-tint:#FBECE2;
+  --good:#11795A;--bad:#B42318;--good-tint:#E2F3EB;--bad-tint:#FBE8E6;
+  --shadow:0 18px 40px -26px rgba(22,32,58,.55);
+  --serif:'Literata',Georgia,'Times New Roman',serif;
+  --sans:'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color-scheme:light;box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1626;--card:#18213A;--ink:#E7ECF6;--ink-soft:#9DA9C2;
+    --rule:#26314B;--rule-strong:#3A4766;--line:#1F2A44;--head:#A4525A;
+    --m:#8DB6FF;--f:#FFA56F;--on-g:#0F1626;--m-tint:#1B2945;--f-tint:#3A2519;
+    --good:#4CD3A0;--bad:#FF8A80;--good-tint:#123128;--bad-tint:#3A1D1D;
+    --shadow:0 18px 40px -26px rgba(0,0,0,.85);color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1626;--card:#18213A;--ink:#E7ECF6;--ink-soft:#9DA9C2;
+  --rule:#26314B;--rule-strong:#3A4766;--line:#1F2A44;--head:#A4525A;
+  --m:#8DB6FF;--f:#FFA56F;--on-g:#0F1626;--m-tint:#1B2945;--f-tint:#3A2519;
+  --good:#4CD3A0;--bad:#FF8A80;--good-tint:#123128;--bad-tint:#3A1D1D;
+  --shadow:0 18px 40px -26px rgba(0,0,0,.85);color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%}
+body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5}
+:focus-visible{outline:3px solid var(--m);outline-offset:2px}
+button{font:inherit;color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{max-width:600px;margin:0 auto;padding:12px 18px 40px}
+.view{display:none}
+.view.active{display:block}
+[lang="uk"]{font-family:var(--serif)}
+.g-m{color:var(--m)}.g-f{color:var(--f)}
+.nw{white-space:nowrap}
+
+/* En-tête */
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:10px 0 0}
+.title{font-family:var(--serif);font-weight:600;font-size:clamp(2.5rem,12vw,3.3rem);line-height:1;letter-spacing:-.02em;margin:0}
+.sub{margin:10px 0 0;color:var(--ink-soft);max-width:35ch}
+h2{font-family:var(--serif);font-weight:600;font-size:1.32rem;line-height:1.3;margin:34px 0 10px}
+h3{font-family:var(--serif);font-weight:600;font-size:1.08rem;margin:22px 0 6px}
+p{margin:8px 0}
+.small{font-size:.92rem;color:var(--ink-soft)}
+.icon-btn{flex:none;width:46px;height:46px;border-radius:50%;border:1.5px solid var(--rule-strong);background:var(--card);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0}
+.icon-btn.sm{width:40px;height:40px}
+
+/* Fiche bristol : le motif de l'application */
+.fiche{
+  position:relative;margin:16px 0 0;border-radius:6px;padding:0 20px 20px;
+  background-color:var(--card);
+  background-image:linear-gradient(var(--head),var(--head)),repeating-linear-gradient(180deg,transparent 0 calc(2.25rem - 1px),var(--line) calc(2.25rem - 1px) 2.25rem);
+  background-size:100% 2px,100% calc(100% - 2.9rem);
+  background-position:0 2.75rem,0 2.9rem;background-repeat:no-repeat;
+  box-shadow:var(--shadow);
+}
+.fiche-cat{margin:0;min-height:2.75rem;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.88rem;color:var(--ink-soft)}
+.tag{display:inline-flex;align-items:center;gap:6px;font-weight:700;white-space:nowrap}
+.dots{display:inline-flex;gap:3px}
+.dots i{width:8px;height:8px;border-radius:50%;border:1.5px solid currentColor;display:inline-block}
+.dots i.on{background:currentColor}
+.fiche-word{margin:26px 0 4px;font-family:var(--serif);font-weight:600;font-size:clamp(2.1rem,10.5vw,3.05rem);line-height:1.15;letter-spacing:-.01em;overflow-wrap:break-word}
+.fiche-word.long{font-size:clamp(1.65rem,7.4vw,2.35rem)}
+.slot{display:inline-block;min-width:1.6em;height:.95em;margin-right:.24em;border-bottom:3px dashed var(--rule-strong);vertical-align:baseline;text-align:center}
+.slot.on{min-width:0;height:auto;border-bottom:0}
+.slot.on.el{margin-right:0}
+.stamp{display:inline-block;animation:stamp .34s cubic-bezier(.2,.9,.3,1.25) both}
+@keyframes stamp{0%{transform:scale(1.7) rotate(-8deg);opacity:0}70%{opacity:1}100%{transform:none;opacity:1}}
+.fiche-uk{margin:6px 0 0;font-style:italic;font-size:1.18rem;color:var(--ink-soft);line-height:1.45}
+.fiche-after{margin:12px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-family:var(--serif);font-size:1.12rem}
+.gchip{font-family:var(--sans);font-size:.85rem;font-weight:700;padding:3px 10px;border-radius:999px;border:1.5px solid currentColor}
+.expand{margin:6px 0 0;font-size:.95rem;color:var(--ink-soft)}
+
+/* Boutons */
+.btn{font:inherit;font-weight:700;min-height:48px;padding:0 18px;border-radius:14px;border:1.5px solid var(--rule-strong);background:var(--card);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-align:center;touch-action:manipulation}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn.ink{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.btn.big{min-height:58px;font-size:1.06rem}
+.btn.block{display:flex;width:100%;margin-top:16px}
+.btn.grow{flex:1}
+.btn.danger{border-color:var(--bad);color:var(--bad)}
+.btn.danger.armed{background:var(--bad);color:var(--card)}
+.row-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+
+/* Séance */
+#v-session.active{display:flex;flex-direction:column;min-height:calc(100vh - 52px)}
+@supports (height:100svh){#v-session.active{min-height:calc(100svh - 52px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))}}
+.s-top{display:flex;align-items:center;gap:12px;padding-top:4px}
+.s-meta{flex:1;min-width:0}
+.count{margin:0 0 6px;color:var(--ink-soft);font-size:.95rem;font-variant-numeric:tabular-nums}
+.segs{display:flex;gap:3px}
+.seg{flex:1;height:7px;border-radius:4px;background:var(--rule-strong)}
+.seg.ok{background:var(--good)}
+.seg.ko{background:var(--bad)}
+.seg.cur{background:var(--ink)}
+.s-body{flex:1}
+.dock{position:sticky;bottom:0;z-index:2;margin-top:14px;padding:14px 0 calc(12px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--paper) 78%,transparent)}
+.answer{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.g-btn{border:0;border-radius:18px;min-height:112px;padding:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;cursor:pointer;color:var(--on-g);box-shadow:0 12px 24px -16px rgba(0,0,0,.7);-webkit-tap-highlight-color:transparent;touch-action:manipulation;transition:transform .08s}
+.g-btn.m{background:var(--m)}
+.g-btn.f{background:var(--f)}
+.g-btn:active{transform:translateY(1px) scale(.985)}
+.g-main{font-family:var(--serif);font-size:1.8rem;font-weight:600;line-height:1}
+.g-sub{font-size:.95rem;font-weight:700;opacity:.92}
+.after{display:flex;gap:10px}
+.after .btn{min-height:64px}
+.instr{margin:16px 2px 0;color:var(--ink-soft)}
+.kbd{display:none;margin:10px 0 0;text-align:center;font-size:.85rem;color:var(--ink-soft)}
+@media (hover:hover) and (pointer:fine){.kbd{display:block}}
+kbd{font-family:var(--sans);font-size:.8rem;padding:1px 6px;border:1px solid var(--rule-strong);border-bottom-width:2px;border-radius:5px;background:var(--card)}
+
+/* Correction */
+.fb{margin:14px 0 0;background:var(--card);border-radius:4px 12px 12px 4px;padding:14px 16px 12px;border-left:5px solid var(--good)}
+.fb.ko{border-left-color:var(--bad)}
+.verdict{display:flex;align-items:center;gap:10px;margin:0;font-weight:700;font-size:1.08rem}
+.verdict svg{flex:none}
+.fb.ok .verdict{color:var(--good)}
+.fb.ko .verdict{color:var(--bad)}
+.chose{margin:2px 0 0 34px;font-size:.92rem;color:var(--ink-soft)}
+.blk{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--rule)}
+.blk-h{margin:0;font-weight:700;font-size:.95rem}
+.blk-h .formula{font-family:var(--serif);font-weight:600}
+.blk p[lang="uk"]{margin:4px 0 0;font-size:1rem;line-height:1.5}
+.blk.exc{border-top:0;background:var(--bad-tint);border-radius:10px;padding:10px 12px}
+.blk.exc .blk-h{color:var(--bad)}
+.blk.trap{border-top:0;background:var(--m-tint);border-radius:10px;padding:10px 12px}
+.status{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--rule);font-size:.93rem;color:var(--ink-soft);display:flex;align-items:center;gap:10px}
+
+/* Écrans intermédiaires */
+.inter{padding-top:18px}
+.steptitle{font-family:var(--serif);font-weight:600;font-size:1.6rem;line-height:1.2;margin:8px 0 6px}
+.score{font-family:var(--serif);font-size:1.25rem;margin:6px 0 0}
+.score b{font-size:2.4rem;font-weight:600;font-variant-numeric:tabular-nums}
+.banner{margin:16px 0 0;padding:14px 16px;border-radius:12px;background:var(--good-tint);border:1.5px solid var(--good)}
+.banner p{margin:0}
+.banner strong{color:var(--good)}
+
+/* Tableau de bord */
+.plan{font-family:var(--serif);font-size:1.25rem;line-height:1.35;margin:18px 0 2px}
+.streak{margin:14px 0 0;font-weight:700}
+.whole{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--rule);margin:14px 0 10px}
+.whole i,.bar i{display:block;height:100%}
+.k-ok{background:var(--good)}
+.k-rev{background:repeating-linear-gradient(135deg,var(--ink-soft) 0 3px,transparent 3px 6px);background-color:var(--rule-strong)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0;padding:0;list-style:none}
+.legend li{display:flex;align-items:center;gap:8px}
+.legend .sw{width:14px;height:14px;border-radius:4px;flex:none;background:var(--rule)}
+.legend .sw.k-ok{background:var(--good)}
+.legend .sw.k-rev{background:repeating-linear-gradient(135deg,var(--ink-soft) 0 3px,transparent 3px 6px);background-color:var(--rule-strong)}
+.legend b{font-family:var(--serif);font-size:1.15rem;font-variant-numeric:tabular-nums}
+.facts{margin:12px 0 0;color:var(--ink-soft);font-size:.95rem}
+.stages{list-style:none;margin:0;padding:0}
+.stage{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--rule-strong)}
+.snum{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-variant-numeric:tabular-nums;border:1.5px solid var(--ink);color:var(--ink)}
+.stage.done .snum{background:var(--good);border-color:var(--good);color:var(--card)}
+.stage.locked .snum{border-color:var(--rule-strong);color:var(--ink-soft)}
+.stage.locked .sname,.stage.locked .suk{color:var(--ink-soft)}
+.sname{margin:0;font-weight:700;line-height:1.3}
+.suk{margin:1px 0 0;font-size:.92rem;color:var(--ink-soft);font-style:italic}
+.bar{position:relative;display:flex;height:9px;border-radius:5px;background:var(--rule);overflow:visible;margin:10px 0 0}
+.bar i:first-child{border-radius:5px 0 0 5px}
+.goal{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);border-radius:1px}
+.sstat{margin:6px 0 0;font-size:.9rem;color:var(--ink-soft)}
+.segctl{display:inline-flex;border:1.5px solid var(--rule-strong);border-radius:12px;overflow:hidden;background:var(--card)}
+.segctl button{border:0;background:none;min-height:44px;padding:0 16px;font-weight:700;cursor:pointer}
+.segctl button[aria-pressed="true"]{background:var(--ink);color:var(--card)}
+.wlist{list-style:none;margin:8px 0 0;padding:0}
+.wrow{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule)}
+.wfr{font-family:var(--serif);font-size:1.12rem;font-weight:600}
+.wuk{grid-column:1;font-size:.95rem;color:var(--ink-soft)}
+.wside{grid-row:1/3;grid-column:2;display:flex;align-items:center;gap:10px;color:var(--ink-soft)}
+.mini{font-family:var(--sans);font-size:.78rem;font-weight:700;margin-left:6px;vertical-align:2px}
+.empty{color:var(--ink-soft);padding:12px 0}
+.navcard{color:var(--ink);text-align:left;width:100%;display:grid;gap:3px;padding:14px 16px;margin-top:10px;border-radius:12px;border:1.5px solid var(--rule-strong);background:var(--card);cursor:pointer}
+.navcard strong{font-family:var(--serif);font-size:1.1rem;font-weight:600}
+.navcard span{color:var(--ink-soft);font-size:.95rem}
+details.how{margin:14px 0 0;background:var(--card);border-radius:12px;padding:0 16px}
+details.how summary{cursor:pointer;min-height:48px;display:flex;align-items:center;font-weight:700}
+details.how ul{margin:0 0 14px;padding-left:20px}
+details.how li{margin:4px 0}
+
+/* Sous-pages */
+.subtop{display:flex;align-items:center;gap:12px;margin:4px 0 6px}
+.subtitle{margin:0;font-weight:700}
+.lead{color:var(--ink-soft)}
+.ruleitem{padding:14px 0;border-bottom:1px solid var(--rule-strong)}
+.ri-h{margin:0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.ri-h .formula{font-family:var(--serif);font-weight:600;font-size:1.15rem}
+.ruleitem p[lang="uk"]{margin:6px 0 0}
+.ri-ex{margin:6px 0 0;font-size:.95rem}
+.ri-ex span{color:var(--ink-soft)}
+.ri-exc{margin:4px 0 0;font-size:.95rem;color:var(--bad)}
+.tip{background:var(--card);border-radius:12px;padding:14px 16px;margin:14px 0 0;border-left:5px solid var(--head)}
+.tip p{margin:4px 0}
+.pairs{margin:8px 0 0;padding:0;list-style:none}
+.pairs li{padding:8px 0;border-bottom:1px solid var(--rule)}
+.pairs .fr{font-family:var(--serif);font-weight:600}
+.fields{display:grid;gap:12px;margin:12px 0 0}
+.field{display:grid;gap:4px;font-size:.95rem}
+.field>span{color:var(--ink-soft)}
+select,textarea{font:inherit;min-height:46px;padding:8px 12px;border-radius:10px;border:1.5px solid var(--rule-strong);background:var(--card);color:var(--ink);width:100%}
+textarea{min-height:90px;font-size:.85rem;resize:vertical;word-break:break-all}
+input[type=range]{width:100%;accent-color:var(--m)}
+.check{display:flex;align-items:center;gap:10px;min-height:46px;cursor:pointer}
+.check input{width:22px;height:22px;accent-color:var(--m)}
+.toast-wrap{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;padding:0 16px calc(18px + env(safe-area-inset-bottom,0px));pointer-events:none;z-index:9}
+.toast{background:var(--ink);color:var(--card);padding:12px 16px;border-radius:12px;max-width:520px;box-shadow:var(--shadow)}
+@media (prefers-reduced-motion:reduce){.stamp{animation:none}.g-btn{transition:none}}
+@media (max-width:370px){.g-main{font-size:1.55rem}.g-btn{min-height:100px}.wrap{padding-left:14px;padding-right:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Accueil et tableau de bord -->
+  <section id="v-home" class="view active" aria-labelledby="h-title">
+    <header class="top">
+      <div>
+        <h1 class="title" id="h-title"><span class="g-m">Le</span> ou <span class="g-f">la</span>&nbsp;?</h1>
+        <p class="sub" id="h-sub"></p>
+      </div>
+      <button class="icon-btn" data-act="settings" aria-label="Réglages et sauvegarde">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+      </button>
+    </header>
+
+    <section class="fiche" aria-label="Séance du jour">
+      <p class="fiche-cat"><span>Séance du jour</span><span id="h-stage"></span></p>
+      <p class="plan" id="h-plan"></p>
+      <p class="small" id="h-plan-note"></p>
+      <button class="btn ink block big" data-act="start">Commencer la séance</button>
+    </section>
+    <p class="streak" id="h-streak"></p>
+
+    <details class="how">
+      <summary>Comment fonctionne une séance&nbsp;?</summary>
+      <ul>
+        <li>Une séance compte 20 mots : d’abord les mots où tu t’es trompée, puis des mots nouveaux.</li>
+        <li>Lis le nom et sa traduction, puis touche <b class="g-m">le / un</b> (masculin) ou <b class="g-f">la / une</b> (féminin). Pour les noms en l’, choisis aussi le genre.</li>
+        <li>Un mot raté reste à revoir jusqu’à 3 bonnes réponses d’affilée, lors de 3 séances différentes.</li>
+        <li>Les mots ratés reviennent une dernière fois en fin de séance, sans compter dans les résultats.</li>
+        <li>Une étape s’ouvre quand 80 % des mots de l’étape précédente sont maîtrisés.</li>
+      </ul>
+    </details>
+
+    <h2>Tableau de bord</h2>
+    <div class="whole" id="d-whole" role="img"></div>
+    <ul class="legend" id="d-legend"></ul>
+    <p class="facts" id="d-facts"></p>
+
+    <h2>Progression par étape</h2>
+    <ol class="stages" id="d-stages"></ol>
+    <p class="small">Le trait vertical marque les 80 % à maîtriser pour ouvrir l’étape suivante.</p>
+
+    <h2>Mes mots</h2>
+    <div class="segctl" role="group" aria-label="Choisir la liste">
+      <button data-act="tab" data-tab="rev" aria-pressed="true" id="t-rev">À revoir</button>
+      <button data-act="tab" data-tab="ok" aria-pressed="false" id="t-ok">Maîtrisés</button>
+    </div>
+    <ul class="wlist" id="d-words"></ul>
+
+    <h2>Aller plus loin</h2>
+    <button class="navcard" data-act="rules"><strong>Les règles du genre</strong><span>Les terminaisons qui indiquent le genre, les exceptions et les pièges, expliqués en ukrainien.</span></button>
+    <button class="navcard" data-act="settings"><strong>Réglages et sauvegarde</strong><span>Voix, prononciation automatique, copie de la progression vers un autre appareil.</span></button>
+  </section>
+
+  <!-- Séance -->
+  <section id="v-session" class="view" aria-label="Séance">
+    <div class="s-top">
+      <button class="icon-btn" data-act="quit" aria-label="Quitter la séance (les réponses déjà données sont enregistrées)">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="s-meta"><p class="count" id="s-count"></p><div class="segs" id="s-segs" aria-hidden="true"></div></div>
+    </div>
+    <div class="s-body" id="s-body"></div>
+    <div class="dock" id="s-dock"></div>
+  </section>
+
+  <!-- Règles -->
+  <section id="v-rules" class="view" aria-labelledby="r-title">
+    <div class="subtop">
+      <button class="icon-btn" data-act="home" aria-label="Retour au tableau de bord"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="subtitle" id="r-title">Les règles du genre</p>
+    </div>
+    <div id="r-body"></div>
+  </section>
+
+  <!-- Réglages -->
+  <section id="v-settings" class="view" aria-labelledby="st-title">
+    <div class="subtop">
+      <button class="icon-btn" data-act="home" aria-label="Retour au tableau de bord"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <p class="subtitle" id="st-title">Réglages et sauvegarde</p>
+    </div>
+    <h2>Prononciation</h2>
+    <label class="check"><input type="checkbox" id="o-audio"> Prononcer la bonne réponse après chaque mot</label>
+    <div class="fields">
+      <label class="field"><span>Voix</span><select id="o-voice"></select></label>
+      <label class="field"><span>Vitesse : <b id="o-rate-val"></b></span><input type="range" id="o-rate" min="0.6" max="1.15" step="0.05"></label>
+    </div>
+    <div class="row-btns"><button class="btn" data-act="test">Tester la voix</button></div>
+    <p class="small" id="o-voice-note">Les voix dépendent du téléphone. Choisis de préférence une voix française de Belgique (fr-BE) ou de France (fr-FR).</p>
+
+    <h2>Sauvegarde</h2>
+    <p class="small">La progression est enregistrée automatiquement après chaque réponse, sur cet appareil et dans ce navigateur. Pour la transférer vers un autre appareil, copie le code ci-dessous puis colle-le sur l’autre appareil.</p>
+    <div class="row-btns"><button class="btn" data-act="export">Copier mon code de sauvegarde</button></div>
+    <label class="field" style="margin-top:12px"><span>Code de sauvegarde</span><textarea id="o-code" spellcheck="false" autocomplete="off" placeholder="Colle ici un code de sauvegarde pour restaurer ta progression."></textarea></label>
+    <div class="row-btns"><button class="btn" data-act="import">Restaurer depuis ce code</button></div>
+
+    <h2>Remise à zéro</h2>
+    <p class="small">Efface tous les résultats et reverrouille les étapes. Les réglages de voix sont conservés.</p>
+    <button class="btn danger" data-act="reset">Remettre la progression à zéro</button>
+  </section>
+</div>
+<div class="toast-wrap" aria-live="polite"><div class="toast" id="toast" hidden></div></div>
+
+<script>
+(function(){
+"use strict";
+
+/* =========================================================
+   1. BASE LEXICALE : 8 étapes, du courant au spécialisé
+   [mot, genre, traduction ukrainienne, options]
+   options : r = règle imposée, h = nom principal d’un mot composé,
+   t = piège de l’ukrainien [mot ukrainien, genre m/f/n/p],
+   n = remarque en ukrainien, a = forme développée, say = prononciation,
+   ni = pas d’article indéfini naturel
+   ========================================================= */
+const STAGES=[
+{name:"La classe et le matériel",uk:"Клас і шкільне приладдя",w:[
+["cahier","m","зошит"],
+["tableau","m","дошка",{t:["дошка","f"]}],
+["craie","f","крейда"],
+["feuille","f","аркуш (паперу)",{t:["аркуш","m"]}],
+["stylo","m","ручка",{t:["ручка","f"]}],
+["crayon","m","олівець"],
+["gomme","f","гумка (для стирання)"],
+["règle","f","лінійка; правило"],
+["latte","f","лінійка",{n:"Бельгійське слово: у Франції кажуть la règle."}],
+["bic","m","кулькова ручка",{t:["ручка","f"],n:"Бельгійське розмовне слово (від марки Bic). У Франції кажуть le stylo à bille."}],
+["classeur","m","папка-реєстратор",{r:"eurm"}],
+["farde","f","папка (для аркушів)",{n:"Бельгійське слово: у Франції — la chemise або le classeur."}],
+["trousse","f","пенал",{t:["пенал","m"]}],
+["calculatrice","f","калькулятор",{t:["калькулятор","m"]}],
+["ordinateur","m","комп’ютер"],
+["écran","m","екран"],
+["projecteur","m","проєктор"],
+["marqueur","m","маркер",{r:"eurm"}],
+["surligneur","m","текстовий маркер (виділювач)",{r:"eurm"}],
+["agrafeuse","f","степлер",{t:["степлер","m"]}],
+["photocopieuse","f","копіювальний апарат (ксерокс)",{t:["ксерокс","m"]}],
+["photocopie","f","ксерокопія"],
+["page","f","сторінка"],
+["livre","m","книга",{t:["книга","f"],n:"Не плутати: la livre — фунт (грошова одиниця або міра ваги)."}],
+["manuel","m","підручник"],
+["dictionnaire","m","словник"],
+["table","f","стіл",{t:["стіл","m"]}],
+["chaise","f","стілець",{t:["стілець","m"]}],
+["banc","m","парта; лава",{t:["парта","f"]}],
+["porte","f","двері",{t:["двері","p"]}],
+["fenêtre","f","вікно",{t:["вікно","n"]}],
+["local","m","класна кімната; приміщення",{n:"У Бельгії le local — це класна кімната (у Франції — la salle de classe)."}],
+["salle","f","зала; кімната"],
+["sac","m","сумка; рюкзак",{t:["сумка","f"]}],
+["casier","m","шафка (для речей)"],
+["clé","f","ключ",{t:["ключ","m"]}],
+["tiroir","m","шухляда",{t:["шухляда","f"]}],
+["papier","m","папір"],
+["horloge","f","годинник (настінний)",{t:["годинник","m"]}],
+["poubelle","f","кошик для сміття; смітник"],
+["clavier","m","клавіатура",{t:["клавіатура","f"]}],
+["logiciel","m","програма; програмне забезпечення",{t:["програма","f"]}],
+["imprimante","f","принтер",{t:["принтер","m"]}],
+["image","f","зображення; малюнок",{t:["зображення","n"]}]
+]},
+{name:"La vie de l’école",uk:"Шкільне життя",w:[
+["école","f","школа"],
+["classe","f","клас",{t:["клас","m"]}],
+["cours","m","урок; курс",{n:"Не плутати: le cours (урок) і la cour (шкільне подвір’я) звучать однаково."}],
+["leçon","f","урок",{t:["урок","m"]}],
+["horaire","m","розклад"],
+["récréation","f","перерва (у школі)"],
+["sonnerie","f","дзвінок",{t:["дзвінок","m"]}],
+["pause","f","пауза; перерва"],
+["semaine","f","тиждень",{t:["тиждень","m"]}],
+["journée","f","день (протягом дня)",{t:["день","m"]}],
+["année","f","рік",{t:["рік","m"]}],
+["heure","f","година"],
+["trimestre","m","триместр"],
+["période","f","період",{t:["період","m"]}],
+["rentrée","f","початок навчального року"],
+["congé","m","вихідний; короткі канікули; відпустка"],
+["été","m","літо",{r:"saison",t:["літо","n"],n:"Слово закінчується на -té, але це пора року — тому чоловічий рід: un été."}],
+["hiver","m","зима",{r:"saison",t:["зима","f"]}],
+["automne","m","осінь",{r:"saison",t:["осінь","f"]}],
+["absence","f","відсутність"],
+["retard","m","запізнення",{t:["запізнення","n"]}],
+["appel","m","перекличка",{t:["перекличка","f"],n:"Faire l’appel — робити перекличку на початку уроку."}],
+["couloir","m","коридор"],
+["cour","f","шкільне подвір’я",{n:"Не плутати з le cours (урок): звучать однаково."}],
+["réfectoire","m","їдальня",{t:["їдальня","f"]}],
+["bibliothèque","f","бібліотека"],
+["direction","f","дирекція; керівництво"],
+["bureau","m","кабінет; письмовий стіл"],
+["réunion","f","нарада; збори"],
+["règlement","m","правила; статут",{n:"Le règlement d’ordre intérieur (ROI) — правила внутрішнього розпорядку школи. У бухгалтерії le règlement — оплата рахунку."}],
+["bulletin","m","табель успішності"],
+["conseil","m","рада; порада",{t:["рада","f"],n:"Le conseil de classe — засідання всіх учителів класу щодо результатів учнів."}],
+["diplôme","m","диплом"],
+["certificat","m","свідоцтво; сертифікат",{t:["свідоцтво","n"]}],
+["stage","m","практика; стажування",{t:["практика","f"]}],
+["option","f","напрям (профіль) навчання"],
+["niveau","m","рівень"],
+["établissement","m","навчальний заклад"],
+["athénée","m","атеней (державна середня школа в Бельгії)",{n:"Бельгійське слово: l’athénée royal — державна середня школа."}],
+["sortie","f","екскурсія; вихід"],
+["calendrier","m","календар"],
+["fin","f","кінець",{t:["кінець","m"]}],
+["français","m","французька мова",{r:"langue",t:["мова","f"]}],
+["incendie","m","пожежа",{t:["пожежа","f"],n:"L’exercice incendie — навчальна евакуація на випадок пожежі."}]
+]},
+{name:"Enseigner et évaluer",uk:"Навчання та оцінювання",w:[
+["consigne","f","інструкція (до завдання)"],
+["évaluation","f","оцінювання",{t:["оцінювання","n"]}],
+["exercice","m","вправа",{t:["вправа","f"],n:"У бухгалтерії l’exercice comptable — звітний (фінансовий) рік."}],
+["devoir","m","домашнє завдання",{t:["завдання","n"]}],
+["interro","f","контрольна робота",{r:"abrev",a:"l’interrogation",n:"Розмовне скорочення, дуже поширене в бельгійських школах."}],
+["examen","m","іспит"],
+["note","f","оцінка; нотатка"],
+["point","m","бал",{n:"У Бельгії оцінки зазвичай рахують у балах: les points (наприклад, 14 sur 20)."}],
+["correction","f","перевірка; виправлення"],
+["copie","f","письмова робота учня; копія"],
+["compétence","f","компетентність"],
+["objectif","m","мета; ціль",{t:["мета","f"]}],
+["critère","m","критерій"],
+["indicateur","m","показник; індикатор"],
+["barème","m","шкала оцінювання",{t:["шкала","f"]}],
+["séquence","f","серія уроків (навчальна послідовність)"],
+["préparation","f","підготовка; план уроку"],
+["fiche","f","картка; аркуш із завданнями"],
+["dossier","m","папка; справа; проєкт"],
+["question","f","питання",{t:["питання","n"]}],
+["réponse","f","відповідь"],
+["explication","f","пояснення",{t:["пояснення","n"]}],
+["exemple","m","приклад"],
+["synthèse","f","підсумок; синтез",{t:["синтез","m"]}],
+["résumé","m","короткий виклад; конспект"],
+["schéma","m","схема",{t:["схема","f"]}],
+["méthode","f","метод",{t:["метод","m"]}],
+["problème","m","проблема; задача",{t:["проблема","f"]}],
+["thème","m","тема",{t:["тема","f"]}],
+["programme","m","програма",{t:["програма","f"]}],
+["apprentissage","m","навчання; учіння",{t:["навчання","n"]}],
+["enseignement","m","викладання; освіта"],
+["remédiation","f","додаткові заняття (для подолання труднощів)",{n:"Бельгійське шкільне поняття: допомога учням, які мають труднощі з матеріалом."}],
+["discipline","f","дисципліна; навчальний предмет"],
+["comportement","m","поведінка",{t:["поведінка","f"]}],
+["bavardage","m","балачки (розмови на уроці)"],
+["attention","f","увага"],
+["silence","m","тиша",{t:["тиша","f"]}],
+["réussite","f","успіх",{t:["успіх","m"]}],
+["échec","m","невдача; неуспіх",{t:["невдача","f"]}],
+["erreur","f","помилка",{r:"eurf"}],
+["groupe","m","група",{t:["група","f"]}],
+["travail","m","робота; праця",{t:["робота","f"]}],
+["épreuve","f","іспит; випробування",{t:["іспит","m"],n:"L’épreuve intégrée — підсумкова комплексна робота в бельгійській кваліфікаційній технічній освіті."}]
+]},
+{name:"Économie : le marché et ses acteurs",uk:"Економіка: ринок і його учасники",w:[
+["marché","m","ринок"],
+["offre","f","пропозиція"],
+["demande","f","попит",{t:["попит","m"]}],
+["prix","m","ціна",{t:["ціна","f"]}],
+["bien","m","товар; благо",{n:"Les biens et les services — товари та послуги."}],
+["service","m","послуга",{t:["послуга","f"]}],
+["besoin","m","потреба",{t:["потреба","f"]}],
+["consommation","f","споживання",{t:["споживання","n"]}],
+["production","f","виробництво",{t:["виробництво","n"]}],
+["entreprise","f","підприємство",{t:["підприємство","n"]}],
+["ménage","m","домогосподарство",{t:["домогосподарство","n"]}],
+["État","m","держава",{t:["держава","f"]}],
+["banque","f","банк",{t:["банк","m"]}],
+["échange","m","обмін"],
+["monnaie","f","гроші; валюта; дрібні гроші"],
+["argent","m","гроші",{t:["гроші","p"]}],
+["concurrence","f","конкуренція"],
+["monopole","m","монополія",{t:["монополія","f"]}],
+["valeur","f","вартість; цінність",{r:"eurf"}],
+["richesse","f","багатство",{t:["багатство","n"]}],
+["revenu","m","дохід"],
+["épargne","f","заощадження",{t:["заощадження","n"]}],
+["investissement","m","інвестиція; вкладення",{t:["інвестиція","f"]}],
+["salaire","m","заробітна плата",{t:["плата","f"]}],
+["emploi","m","робота; зайнятість",{t:["робота","f"]}],
+["capital","m","капітал"],
+["profit","m","прибуток (загалом)"],
+["rareté","f","рідкість; обмеженість (ресурсів)"],
+["ressource","f","ресурс",{t:["ресурс","m"]}],
+["agent","m","суб’єкт (економіки); агент"],
+["consommateur","m","споживач",{n:"Про жінку кажуть la consommatrice."}],
+["secteur","m","сектор; галузь"],
+["commerce","m","торгівля",{t:["торгівля","f"]}],
+["économie","f","економіка"],
+["coût","m","вартість; витрати",{t:["вартість","f"]}],
+["quantité","f","кількість"],
+["qualité","f","якість"],
+["équilibre","m","рівновага",{t:["рівновага","f"]}],
+["tarif","m","тариф; розцінка"],
+["pouvoir d’achat","m","купівельна спроможність",{t:["спроможність","f"]}],
+["propriété","f","власність"],
+["population","f","населення",{t:["населення","n"]}],
+["choix","m","вибір"],
+["bourse","f","біржа"]
+]},
+{name:"L’entreprise et sa gestion",uk:"Підприємство та управління",w:[
+["société","f","товариство; компанія; суспільство",{t:["товариство","n"]}],
+["gestion","f","управління; менеджмент",{t:["управління","n"]}],
+["organigramme","m","організаційна схема",{t:["схема","f"]}],
+["département","m","відділ; департамент"],
+["personnel","m","персонал"],
+["équipe","f","команда"],
+["siège social","m","головний офіс (юридична адреса)"],
+["filiale","f","дочірня компанія"],
+["commande","f","замовлення",{t:["замовлення","n"]}],
+["livraison","f","доставка; постачання"],
+["stock","m","запас (товарів)"],
+["marchandise","f","товар",{t:["товар","m"]}],
+["vente","f","продаж",{t:["продаж","m"]}],
+["achat","m","купівля; закупівля",{t:["купівля","f"]}],
+["marge","f","маржа; націнка"],
+["chiffre d’affaires","m","оборот; виручка"],
+["bénéfice","m","прибуток"],
+["perte","f","збиток",{t:["збиток","m"]}],
+["rentabilité","f","рентабельність"],
+["contrat","m","договір; контракт"],
+["devis","m","кошторис; комерційна пропозиція"],
+["publicité","f","реклама"],
+["marketing","m","маркетинг"],
+["stratégie","f","стратегія"],
+["trésorerie","f","грошові кошти; казначейство"],
+["financement","m","фінансування",{t:["фінансування","n"]}],
+["emprunt","m","позика (взята); кредит",{t:["позика","f"]}],
+["projet","m","проєкт"],
+["virement","m","банківський переказ"],
+["paiement","m","платіж; оплата"],
+["prêt","m","позика (надана); кредит",{t:["позика","f"]}],
+["échéance","f","строк сплати",{t:["строк","m"]}],
+["délai","m","строк; термін"],
+["recrutement","m","набір персоналу"],
+["licenciement","m","звільнення",{t:["звільнення","n"]}],
+["formation","f","навчання; підготовка (кадрів)",{t:["навчання","n"]}],
+["responsabilité","f","відповідальність"],
+["assurance","f","страхування",{t:["страхування","n"]}],
+["faillite","f","банкрутство",{t:["банкрутство","n"]}],
+["usine","f","завод; фабрика",{t:["завод","m"]}],
+["magasin","m","магазин"],
+["budget","m","бюджет"],
+["réseau","m","мережа",{t:["мережа","f"]}],
+["mode de paiement","m","спосіб оплати",{n:"Не плутати: le mode — спосіб, la mode — мода."}]
+]},
+{name:"Économie : croissance, emploi, politiques",uk:"Економіка: зростання, зайнятість, політика",w:[
+["inflation","f","інфляція"],
+["chômage","m","безробіття",{t:["безробіття","n"]}],
+["PIB","m","ВВП (валовий внутрішній продукт)",{r:"sigle",a:"le produit intérieur brut",say:"le P.I.B."}],
+["croissance","f","зростання",{t:["зростання","n"]}],
+["récession","f","рецесія; спад"],
+["crise","f","криза"],
+["dette","f","борг",{t:["борг","m"]}],
+["déficit","m","дефіцит"],
+["impôt","m","податок"],
+["taxe","f","податок; збір",{t:["податок","m"]}],
+["fiscalité","f","оподаткування",{t:["оподаткування","n"]}],
+["politique","f","політика"],
+["taux","m","ставка; рівень",{t:["ставка","f"],n:"Le taux d’intérêt — відсоткова ставка; le taux de chômage — рівень безробіття."}],
+["intérêt","m","відсоток (за кредитом); інтерес"],
+["indice","m","індекс"],
+["mondialisation","f","глобалізація"],
+["exportation","f","експорт",{t:["експорт","m"]}],
+["importation","f","імпорт",{t:["імпорт","m"]}],
+["moyenne","f","середнє значення",{t:["значення","n"]}],
+["conjoncture","f","кон’юнктура"],
+["cycle","m","цикл"],
+["déflation","f","дефляція"],
+["industrie","f","промисловість"],
+["agriculture","f","сільське господарство",{t:["господарство","n"]}],
+["sécurité sociale","f","соціальне забезпечення",{t:["забезпечення","n"]}],
+["allocation","f","допомога; соціальна виплата"],
+["subvention","f","субсидія; дотація"],
+["protectionnisme","m","протекціонізм"],
+["libre-échange","m","вільна торгівля",{h:"échange",t:["торгівля","f"]}],
+["devise","f","іноземна валюта"],
+["euro","m","євро",{t:["євро","n"]}],
+["BCE","f","ЄЦБ (Європейський центральний банк)",{r:"sigle",a:"la Banque centrale européenne",say:"la B.C.E.",t:["банк","m"]}],
+["productivité","f","продуктивність"],
+["compétitivité","f","конкурентоспроможність"],
+["pauvreté","f","бідність"],
+["hausse","f","зростання; підвищення",{t:["зростання","n"],n:"Літера h тут «придихова»: кажуть la hausse, а не l’hausse."}],
+["baisse","f","зниження",{t:["зниження","n"]}],
+["syndicat","m","профспілка",{t:["профспілка","f"]}],
+["grève","f","страйк",{t:["страйк","m"]}],
+["Union européenne","f","Європейський Союз",{t:["союз","m"],ni:1}],
+["loi","f","закон",{t:["закон","m"]}],
+["graphique","m","графік; діаграма"],
+["million","m","мільйон"],
+["pourcentage","m","відсоток"]
+]},
+{name:"Comptabilité : les bases",uk:"Бухгалтерський облік: основи",w:[
+["comptabilité","f","бухгалтерський облік; бухгалтерія",{t:["облік","m"]}],
+["bilan","m","баланс"],
+["actif","m","актив"],
+["passif","m","пасив"],
+["compte","m","рахунок"],
+["journal","m","журнал (бухгалтерський)"],
+["grand livre","m","головна книга",{h:"livre",t:["книга","f"]}],
+["écriture","f","бухгалтерський запис (проведення)",{t:["запис","m"]}],
+["débit","m","дебет"],
+["crédit","m","кредит"],
+["solde","m","сальдо (рахунку)",{t:["сальдо","n"],n:"Le solde — сальдо рахунку; les soldes — розпродаж (теж чоловічого роду)."}],
+["facture","f","рахунок-фактура",{t:["рахунок","m"]}],
+["note de crédit","f","кредит-нота",{n:"Бельгійський термін: документ, що зменшує суму рахунку (у Франції — la facture d’avoir)."}],
+["pièce justificative","f","підтвердний (первинний) документ",{t:["документ","m"]}],
+["reçu","m","квитанція",{t:["квитанція","f"]}],
+["charge","f","витрата (бухгалтерська)"],
+["produit","m","дохід (бухгалтерський); продукт"],
+["résultat","m","результат (фінансовий)"],
+["balance","f","оборотно-сальдова відомість",{t:["баланс","m"],n:"La balance — це не баланс! Баланс французькою — le bilan."}],
+["inventaire","m","інвентаризація",{t:["інвентаризація","f"]}],
+["plan comptable","m","план рахунків"],
+["caisse","f","каса"],
+["réserve","f","резерв",{t:["резерв","m"]}],
+["créance","f","дебіторська заборгованість"],
+["fournisseur","m","постачальник",{r:"eurm"}],
+["client","m","клієнт",{n:"Про жінку кажуть la cliente."}],
+["TVA","f","ПДВ (податок на додану вартість)",{r:"sigle",a:"la taxe sur la valeur ajoutée",say:"la T.V.A.",t:["податок","m"]}],
+["acompte","m","аванс; передоплата"],
+["remise","f","знижка (комерційна)"],
+["rabais","m","знижка (за дефект або затримку)",{t:["знижка","f"]}],
+["ristourne","f","бонусна знижка (за обсяг закупівель)"],
+["escompte","m","знижка за дострокову оплату",{t:["знижка","f"]}],
+["immobilisation","f","необоротний актив; основний засіб"],
+["terrain","m","земельна ділянка",{t:["ділянка","f"]}],
+["bâtiment","m","будівля",{t:["будівля","f"]}],
+["matériel","m","обладнання",{t:["обладнання","n"]}],
+["mobilier","m","меблі",{t:["меблі","p"]}],
+["véhicule","m","транспортний засіб"],
+["machine","f","машина; верстат"],
+["matière première","f","сировина"],
+["extrait de compte","m","виписка з рахунку",{t:["виписка","f"]}],
+["poste","m","стаття (балансу); посада",{t:["стаття","f"],n:"Не плутати: la poste — пошта."}],
+["recette","f","надходження; виручка",{t:["надходження","n"]}],
+["montant","m","сума",{t:["сума","f"]}]
+]},
+{name:"Comptabilité : analyse et fiscalité",uk:"Бухгалтерський облік: аналіз і податки",w:[
+["amortissement","m","амортизація",{t:["амортизація","f"]}],
+["PCMN","m","бельгійський план рахунків",{r:"sigle",a:"le plan comptable minimum normalisé",say:"le P.C.M.N."}],
+["provision","f","забезпечення (майбутніх витрат)",{t:["забезпечення","n"]}],
+["dotation","f","відрахування (до амортизації, забезпечень)",{t:["відрахування","n"]}],
+["clôture","f","закриття (рахунків, звітного року)",{t:["закриття","n"]}],
+["compte de résultats","m","звіт про фінансові результати",{n:"Бельгійська назва (у Франції — le compte de résultat)."}],
+["annexe","f","додаток (до звітності)",{t:["додаток","m"]}],
+["régularisation","f","коригування",{t:["коригування","n"]}],
+["report","m","перенесення (сальдо, збитку)",{t:["перенесення","n"]}],
+["plus-value","f","приріст вартості",{r:"value"}],
+["moins-value","f","зменшення вартості (збиток від продажу активу)",{r:"value"}],
+["réduction de valeur","f","знецінення (бельгійський термін)",{t:["знецінення","n"]}],
+["ratio","m","коефіцієнт"],
+["solvabilité","f","платоспроможність"],
+["liquidité","f","ліквідність"],
+["fonds de roulement","m","оборотний капітал",{n:"Не плутати: le fonds — кошти, капітал; le fond — дно, суть."}],
+["dividende","m","дивіденд"],
+["affectation","f","розподіл (прибутку)",{t:["розподіл","m"]}],
+["précompte","m","утриманий податок (авансовий)",{n:"Бельгійський термін: le précompte professionnel — податок, який утримують із зарплати."}],
+["cotisation","f","внесок (соціальний)",{t:["внесок","m"]}],
+["ONSS","m","Національне управління соціального страхування (Бельгія)",{r:"sigle",a:"l’Office national de sécurité sociale",say:"l'O.N.S.S."}],
+["déclaration","f","декларація"],
+["audit","m","аудит"],
+["contrôle","m","контроль; перевірка"],
+["vérification","f","перевірка"],
+["prix de revient","m","собівартість",{t:["собівартість","f"]}],
+["seuil de rentabilité","m","точка беззбитковості",{t:["точка","f"]}],
+["autofinancement","m","самофінансування",{t:["самофінансування","n"]}],
+["cash-flow","m","грошовий потік",{r:"anglais"}],
+["leasing","m","лізинг"],
+["location-financement","f","фінансовий лізинг",{t:["лізинг","m"],n:"Офіційний бельгійський термін для лізингу."}],
+["hypothèque","f","іпотека"],
+["effet de commerce","m","вексель"],
+["bail","m","оренда (договір оренди)",{t:["оренда","f"]}],
+["loyer","m","орендна плата",{t:["плата","f"]}],
+["rémunération","f","винагорода; оплата праці"],
+["découvert","m","овердрафт (від’ємний залишок на рахунку)"],
+["domiciliation","f","автоматичне списання (прямий дебет)",{n:"Бельгійський термін: регулярна автоматична оплата з банківського рахунку."}],
+["paie","f","нарахування та виплата зарплати"],
+["dépréciation","f","знецінення",{t:["знецінення","n"]}],
+["assemblée générale","f","загальні збори",{t:["збори","p"]}],
+["IPP","m","податок на доходи фізичних осіб",{r:"sigle",a:"l’impôt des personnes physiques",say:"l'I.P.P."}],
+["SPF Finances","m","Федеральна державна служба фінансів (податкова)",{r:"sigle",a:"le Service public fédéral Finances",say:"le S.P.F. Finances",t:["служба","f"]}],
+["écart","m","різниця; відхилення",{t:["різниця","f"]}],
+["excédent","m","надлишок; профіцит"]
+]}
+];
+
+const W=[],byId={};
+STAGES.forEach((s,si)=>s.w.forEach(a=>{
+  const it={id:a[0],w:a[0],g:a[1],uk:a[2],o:a[3]||{},st:si};
+  if(byId[it.id])console.warn("Doublon :",it.id);
+  W.push(it);byId[it.id]=it;
+}));
+
+/* =========================================================
+   2. RÈGLES DU GENRE (explications en ukrainien)
+   s = terminaison, g = genre prédit, t = simple tendance,
+   ex = exceptions courantes hors application
+   ========================================================= */
+const R={
+trice:{s:"-trice",g:"f",uk:"Слова на -trice завжди жіночого роду: la calculatrice. Для людей це жіноча пара до -teur: le directeur → la directrice."},
+aison:{s:"-aison",g:"f",uk:"Слова на -aison жіночого роду: la livraison, la saison, la raison."},
+ion:{s:"-tion, -sion, -ion",g:"f",uk:"Слова на -ion (-tion, -sion, -xion) майже завжди жіночого роду: la question, la session, une option.",ex:"le million, un avion, le camion"},
+ment:{s:"-ment",g:"m",uk:"Слова на -ment чоловічого роду: le paiement, le règlement, un enseignement.",ex:"la jument (кобила)"},
+isme:{s:"-isme",g:"m",uk:"Слова на -isme (теорії, системи, явища) чоловічого роду: le protectionnisme, le capitalisme."},
+grec:{s:"-ème, -gramme, -ma",g:"m",uk:"Слова грецького походження на -ème, -gramme, -ma чоловічого роду, хоча українською вони часто жіночого: le problème (проблема), le programme (програма), le schéma (схема).",ex:"la crème"},
+age:{s:"-age",g:"m",uk:"Слова на -age зазвичай чоловічого роду: le stage, le chômage, un apprentissage.",ex:"la page, une image, la plage, la cage, la nage, la rage"},
+euse:{s:"-euse",g:"f",uk:"Слова на -euse жіночого роду, зокрема назви машин і приладів: la photocopieuse, une agrafeuse."},
+teur:{s:"-teur",g:"m",uk:"Слова на -teur (особа, прилад, поняття) чоловічого роду: un ordinateur, le secteur, un indicateur. Про жінку кажуть -trice: la directrice.",ex:"la hauteur, la lenteur"},
+eurm:{fr:"-eur (celui ou ce qui agit) → masculin",g:"m",uk:"Якщо слово на -eur утворене від дієслова й означає того або те, що виконує дію, — чоловічий рід: marquer → le marqueur, fournir → le fournisseur, classer → le classeur."},
+eurf:{fr:"-eur (qualité, notion) → féminin",g:"f",uk:"Абстрактні слова на -eur (якість, відчуття, поняття) жіночого роду: la valeur, une erreur, la couleur.",ex:"le bonheur, le malheur, un honneur"},
+iere:{s:"-ière",g:"f",uk:"Слова на -ière жіночого роду: la matière, la lumière, la carrière.",ex:"le cimetière"},
+te:{s:"-té, -ité",g:"f",uk:"Слова на -té / -ité жіночого роду: la qualité, la société, une activité.",ex:"un été, le comité, le côté, le traité"},
+ee:{s:"-ée",g:"f",uk:"Слова на -ée здебільшого жіночого роду: la journée, la rentrée, une année.",ex:"le lycée, le musée, un athénée"},
+eacc:{s:"-é",g:"m",uk:"Слова на -é (але не -té і не -ée) чоловічого роду: le marché, le congé, le résumé.",ex:"la clé"},
+ure:{s:"-ure",g:"f",uk:"Слова на -ure жіночого роду: la facture, la clôture, une écriture.",ex:"le murmure, le mercure"},
+ance:{s:"-ance, -ence",g:"f",uk:"Слова на -ance / -ence жіночого роду: la croissance, la compétence, une absence.",ex:"le silence"},
+ante:{s:"-ante, -ente",g:"f",uk:"Слова на -ante / -ente жіночого роду: la vente, une imprimante. Порівняйте: слова на -ant / -ent — чоловічого роду (le montant)."},
+ise:{s:"-ise",g:"f",uk:"Слова на -ise жіночого роду: la crise, la remise, une entreprise."},
+esse:{s:"-esse",g:"f",uk:"Слова на -esse жіночого роду: la richesse, la vitesse, une adresse."},
+ette:{s:"-ette",g:"f",uk:"Слова на -ette жіночого роду: la dette, la recette.",ex:"le squelette"},
+elle:{s:"-elle, -ale",g:"f",uk:"Слова на -elle / -ale здебільшого жіночого роду: la poubelle, la filiale.",ex:"le scandale"},
+aie:{s:"-aie",g:"f",uk:"Слова на -aie жіночого роду: la monnaie, la craie, la paie."},
+ie:{s:"-ie",g:"f",uk:"Слова на -ie жіночого роду: la stratégie, la sortie, une économie.",ex:"le génie, un incendie, le parapluie"},
+ine:{s:"-ine, -aine",g:"f",uk:"Слова на -ine / -aine здебільшого жіночого роду: la machine, la semaine, une usine.",ex:"le domaine, le magazine"},
+ite:{s:"-ite",g:"f",t:1,uk:"Слова на -ite здебільшого жіночого роду: la réussite, la faillite.",ex:"le site, le mérite"},
+ique:{s:"-ique",g:"f",t:1,uk:"Слова на -ique, особливо назви наук і галузей, здебільшого жіночого роду: la politique, la logistique, la statistique.",ex:"le graphique, le lexique, le plastique"},
+ice:{s:"-ice",g:"m",t:1,uk:"Пастка: попри кінцеве -e, слова на -ice здебільшого чоловічого роду: le service, le bénéfice, un exercice. Але -trice — завжди жіночий рід.",ex:"la justice, la police, la notice"},
+eau:{s:"-eau",g:"m",uk:"Слова на -eau чоловічого роду: le tableau, le bureau, le niveau.",ex:"l’eau (f.), la peau"},
+oir:{s:"-oir",g:"m",uk:"Слова на -oir чоловічого роду: le devoir, le couloir, le pouvoir."},
+ail:{s:"-ail",g:"m",uk:"Слова на -ail чоловічого роду: le travail, le bail, le détail."},
+eil:{s:"-eil, -euil",g:"m",uk:"Слова на -eil / -euil чоловічого роду: le conseil, le seuil, un accueil."},
+al:{s:"-al",g:"m",uk:"Слова на -al чоловічого роду: le journal, le capital, le local."},
+el:{s:"-el",g:"m",uk:"Слова на -el чоловічого роду: le manuel, le personnel, un appel."},
+at:{s:"-at",g:"m",uk:"Слова на -at чоловічого роду: le contrat, le résultat, un achat."},
+et:{s:"-et, -êt",g:"m",uk:"Слова на -et / -êt чоловічого роду: le budget, le projet, un intérêt.",ex:"la forêt"},
+ier:{s:"-er, -ier",g:"m",uk:"Слова на -er / -ier чоловічого роду: le cahier, le dossier, le loyer.",ex:"la mer"},
+if:{s:"-if",g:"m",uk:"Слова на -if чоловічого роду: un actif, le passif, un objectif."},
+ent:{s:"-ant, -ent",g:"m",uk:"Слова на -ant / -ent чоловічого роду: le montant, le client, un agent. Порівняйте: -ante / -ente — жіночий рід (la vente).",ex:"la dent"},
+ard:{s:"-ard",g:"m",uk:"Слова на -ard чоловічого роду: le retard, le milliard, le hasard."},
+ort:{s:"-ort",g:"m",uk:"Слова на -ort чоловічого роду: le report, le rapport, le transport.",ex:"la mort"},
+ing:{s:"-ing",g:"m",uk:"Англійські слова на -ing чоловічого роду: le marketing, le leasing."},
+in:{s:"-in, -ain, -oin",g:"m",t:1,uk:"Слова на -in / -ain / -oin здебільшого чоловічого роду: le bulletin, le terrain, le besoin.",ex:"la fin, la main, la faim"},
+en:{s:"-en, -ien",g:"m",uk:"Слова на -en / -ien чоловічого роду: un examen, le bien, le lien."},
+an:{s:"-an",g:"m",uk:"Слова на -an чоловічого роду: le bilan, le plan, un écran."},
+cle:{s:"-cle",g:"m",uk:"Слова на -cle чоловічого роду: le cycle, un article, le spectacle.",ex:"la boucle"},
+aire:{s:"-aire",g:"m",t:1,uk:"Слова на -aire здебільшого чоловічого роду: le salaire, le dictionnaire, un horaire.",ex:"la grammaire, une affaire, la circulaire"},
+o:{s:"-o",g:"m",uk:"Слова на -o чоловічого роду: le stylo, le ratio, un euro. Скорочення зберігають рід повного слова: la photo (la photographie)."},
+u:{s:"-u",g:"m",t:1,uk:"Слова на -u здебільшого чоловічого роду: le revenu, le reçu, le contenu.",ex:"la tribu, la vertu"},
+sigle:{fr:"Sigle : genre du nom principal",uk:"Абревіатура має рід свого головного (першого) іменника: TVA = la taxe… → la TVA; PIB = le produit… → le PIB."},
+abrev:{fr:"Abréviation : genre du mot complet",uk:"Скорочене слово зберігає рід повного слова: l’interro = l’interrogation → жіночий рід (une interro)."},
+saison:{fr:"Saisons → masculin",g:"m",uk:"Усі пори року чоловічого роду: le printemps, un été, un automne, un hiver."},
+langue:{fr:"Langues → masculin",g:"m",uk:"Назви мов чоловічого роду: le français, l’anglais, le néerlandais."},
+anglais:{fr:"Mot anglais → masculin",g:"m",uk:"Слова, запозичені з англійської, зазвичай чоловічого роду: le cash-flow, le marketing, le leasing."},
+value:{fr:"-value → féminin",g:"f",uk:"Головна частина слова — value (старе слово, споріднене з la valeur), тому жіночий рід: la plus-value, la moins-value."}
+};
+const SUF=[
+["trice",["trice"]],["aison",["aison"]],["ion",["ion"]],["ment",["ment"]],["isme",["isme"]],["grec",["gramme","ème","ma"]],
+["age",["age"]],["euse",["euse"]],["teur",["teur"]],["iere",["ière"]],["te",["té"]],["ee",["ée"]],["eacc",["é"]],
+["ure",["ure"]],["ance",["ance","ence"]],["ante",["ante","ente"]],["ise",["ise"]],["esse",["esse"]],["ette",["ette"]],
+["elle",["elle","ale"]],["aie",["aie"]],["ie",["ie"]],["ine",["ine"]],["ite",["ite"]],["ique",["ique"]],["ice",["ice"]],
+["eau",["eau"]],["oir",["oir"]],["ail",["ail"]],["eil",["eil","euil"]],["al",["al"]],["el",["el"]],["at",["at"]],
+["et",["et","êt"]],["ier",["er"]],["if",["if"]],["ent",["ent","ant"]],["ard",["ard"]],["ort",["ort"]],["ing",["ing"]],
+["in",["in"]],["en",["en"]],["an",["an"]],["cle",["cle"]],["aire",["aire"]],["o",["o"]],["u",["u"]]
+];
+function suffixKey(word){const lw=word.toLowerCase();for(const [k,arr] of SUF){for(const s of arr){if(lw.endsWith(s))return k;}}return null;}
+function formula(k){const d=R[k];if(d.fr)return d.fr;return d.s+" → "+(d.t?"souvent ":"")+(d.g==="m"?"masculin":"féminin");}
+const RI={};
+function ruleInfo(it){
+  if(RI[it.id])return RI[it.id];
+  const o=it.o;let key=o.r||null,head=null,sub=null;
+  if(!key){
+    if(/[\s\-]/.test(it.w)){head=o.h||it.w.split(/[\s\-]/)[0];key="compose";sub=suffixKey(head);}
+    else key=suffixKey(it.w);
+  }
+  let res=null;
+  if(key){
+    const gExp=key==="compose"?(sub?R[sub].g:null):(R[key].g||null);
+    res={key,head,sub,gExp,exc:!!gExp&&gExp!==it.g};
+  }
+  RI[it.id]=res;return res;
+}
+
+/* =========================================================
+   3. OUTILS
+   ========================================================= */
+const $=s=>document.querySelector(s);
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+function nb(s){return String(s).replace(/ ([?!:;»])/g,"\u00A0$1").replace(/« /g,"«\u00A0");}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function pl(n,s,p){return n+" "+(n>1?p:s);}
+const VOW=/^[aeiouyàâäéèêëîïôöùûüœæ]/i;
+const H_MUET=new Set(["horaire","heure","hiver","horloge","hypothèque"]);
+function elides(it){const first=it.w.split(/[\s\-]/)[0].toLowerCase();return VOW.test(first)||H_MUET.has(first);}
+function defArt(it){return elides(it)?"l’":(it.g==="m"?"le":"la");}
+function indefArt(it){return it.g==="m"?"un":"une";}
+function hasIndef(it){return !(it.o.r==="sigle"||it.o.ni);}
+function defPlain(it){return elides(it)?"l’"+it.w:defArt(it)+" "+it.w;}
+function indefPlain(it){return indefArt(it)+" "+it.w;}
+function artSpan(it,txt){return '<span class="art g-'+it.g+'">'+txt+'</span>';}
+function defHTML(it){return elides(it)?artSpan(it,"l’")+esc(it.w):artSpan(it,defArt(it))+" "+esc(it.w);}
+function indefHTML(it){return artSpan(it,indefArt(it))+" "+esc(it.w);}
+function sx(t){return esc(t).replace(/(^|[\s(«\/])(-[a-zàâäéèêëîïôöùûüç]+)/g,'$1<span class="nw">$2</span>');}
+function nbForm(t){return t.replace(/^(le|la|un|une) /,"$1\u00A0");}
+function showForm(it){return elides(it)&&hasIndef(it)?indefPlain(it):defPlain(it);}
+function gName(g){return g==="m"?"masculin":"féminin";}
+function speechOf(it){let s=it.o.say||defPlain(it);if(elides(it)&&hasIndef(it))s+=", "+indefPlain(it);return s.replace(/’/g,"'");}
+const UKG={m:"чоловічого роду",f:"жіночого роду",n:"середнього роду"};
+const UKN={m:"чоловічий",f:"жіночий"};
+const ICON={
+  ok:'<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M7.5 12.5l3 3 6-6.5"/></svg>',
+  ko:'<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><circle cx="12" cy="12" r="10" stroke-width="2"/><path d="M8.5 8.5l7 7M15.5 8.5l-7 7"/></svg>',
+  play:'<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 0 1 0 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+  lock:'<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+  check:'<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
+};
+function dots(k,cls){let h='<span class="dots'+(cls?" "+cls:"")+'" aria-hidden="true">';for(let i=0;i<3;i++)h+='<i'+(i<k?' class="on"':'')+'></i>';return h+'</span>';}
+
+/* =========================================================
+   4. MÉMOIRE LOCALE (sauvegarde automatique)
+   w[id] = {s: vu, ok, ko, r: à revoir, k: bonnes réponses d’affilée, l: n° de séance}
+   ========================================================= */
+const KEY="le-ou-la-genre-v1";
+let store={w:{},sessions:0,days:[],unlocked:0,settings:{audio:true,voiceURI:null,rate:0.95}};
+let storageOK=true;
+try{
+  const raw=localStorage.getItem(KEY);
+  if(raw){const o=JSON.parse(raw);store={w:o.w||{},sessions:o.sessions||0,days:o.days||[],unlocked:o.unlocked||0,settings:Object.assign({},store.settings,o.settings||{})};}
+}catch(e){storageOK=false;}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){storageOK=false;}}
+function fmt(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+const today=()=>fmt(new Date());
+function markDay(){const t=today();if(!store.days.includes(t)){store.days.push(t);if(store.days.length>500)store.days=store.days.slice(-500);}}
+function streakInfo(){const set=new Set(store.days);const d=new Date();const doneToday=set.has(fmt(d));if(!doneToday)d.setDate(d.getDate()-1);let n=0;while(set.has(fmt(d))){n++;d.setDate(d.getDate()-1);}return{n,doneToday};}
+function status(id){const x=store.w[id];if(!x||!x.s)return"new";return x.r?"rev":"ok";}
+function stageStats(si){const L=W.filter(x=>x.st===si);let m=0,r=0;L.forEach(x=>{const s=status(x.id);if(s==="ok")m++;else if(s==="rev")r++;});return{n:L.length,m,r,u:L.length-m-r,need:Math.ceil(L.length*0.8)};}
+function updateUnlocks(){
+  const opened=[];
+  while(store.unlocked<STAGES.length-1){const s=stageStats(store.unlocked);if(s.m>=s.need){store.unlocked++;opened.push(store.unlocked);}else break;}
+  if(opened.length)save();return opened;
+}
+function grade(id,ok){
+  const x=store.w[id]||{s:0,ok:0,ko:0,r:0,k:0,l:0};
+  const was=x.s?(x.r?"rev":"ok"):"new";
+  x.s++;x.l=store.sessions;let mastered=false;
+  if(ok){x.ok++;if(x.r){x.k++;if(x.k>=3){x.r=0;x.k=0;mastered=true;}}}
+  else{x.ko++;x.r=1;x.k=0;}
+  store.w[id]=x;markDay();save();
+  return{was,mastered,k:x.k,r:x.r};
+}
+
+/* =========================================================
+   5. COMPOSITION D’UNE SÉANCE
+   d’abord les mots à revoir, puis les nouveaux, puis la consolidation
+   ========================================================= */
+const N=20;
+function plan(){
+  const last=id=>(store.w[id]&&store.w[id].l)||0;
+  const rev=shuffle(W.filter(x=>status(x.id)==="rev")).sort((a,b)=>last(a.id)-last(b.id)).slice(0,N);
+  const out=shuffle(rev.map(x=>x.id)),kind={};
+  out.forEach(id=>kind[id]="rev");
+  const nRev=out.length;
+  for(let si=0;si<=store.unlocked&&out.length<N;si++){
+    const fresh=shuffle(W.filter(x=>x.st===si&&status(x.id)==="new"));
+    for(const x of fresh){if(out.length>=N)break;out.push(x.id);kind[x.id]="new";}
+  }
+  const nNew=out.length-nRev;
+  if(out.length<N){
+    const cons=shuffle(W.filter(x=>x.st<=store.unlocked&&status(x.id)==="ok")).sort((a,b)=>last(a.id)-last(b.id)).slice(0,N-out.length);
+    shuffle(cons).forEach(x=>{out.push(x.id);kind[x.id]="cons";});
+  }
+  return{ids:out,kind,nRev,nNew,nCons:out.length-nRev-nNew};
+}
+
+/* =========================================================
+   6. SYNTHÈSE VOCALE
+   ========================================================= */
+const hasTTS=("speechSynthesis" in window)&&("SpeechSynthesisUtterance" in window);
+let voices=[],voice=null,voicesChecked=false;
+function bestVoice(){
+  if(!voices.length)return null;
+  const score=v=>{let s=0;const l=v.lang.toLowerCase().replace("_","-");
+    if(l==="fr-be")s+=5;else if(l==="fr-fr")s+=4;else if(l==="fr-ch")s+=3;else if(l==="fr-ca")s+=1;
+    if(/google|natural|neural|premium|enhanced|amélie|amelie|thomas|audrey|marie|denise|henri|eloise|vivienne|aurélie/i.test(v.name))s+=2;
+    return s;};
+  return voices.slice().sort((a,b)=>score(b)-score(a))[0];
+}
+function loadVoices(){
+  if(!hasTTS)return;
+  voices=(speechSynthesis.getVoices()||[]).filter(v=>/^fr([-_]|$)/i.test(v.lang));
+  voice=voices.find(v=>v.voiceURI===store.settings.voiceURI)||bestVoice();
+  fillVoiceSelect();
+}
+function fillVoiceSelect(){
+  const sel=$("#o-voice");if(!sel)return;
+  sel.innerHTML=voices.length?voices.map(v=>'<option value="'+esc(v.voiceURI)+'"'+(voice&&v.voiceURI===voice.voiceURI?" selected":"")+'>'+esc(v.name)+' ('+esc(v.lang)+')</option>').join(""):'<option value="">Voix par défaut de l’appareil</option>';
+  const n=$("#o-voice-note");
+  if(!hasTTS)n.textContent="Ce navigateur ne sait pas lire à voix haute. Ouvre la page dans Chrome ou Safari.";
+  else if(voicesChecked&&!voices.length)n.textContent="Aucune voix française n’a été trouvée sur cet appareil. Ajoute une voix française dans les réglages de synthèse vocale du téléphone (rubrique Accessibilité), puis recharge la page.";
+}
+function speak(text){
+  if(!hasTTS)return;
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang=voice?voice.lang:"fr-FR";if(voice)u.voice=voice;
+    u.rate=store.settings.rate||0.95;
+    setTimeout(()=>{try{if(speechSynthesis.paused)speechSynthesis.resume();speechSynthesis.speak(u);}catch(e){}},60);
+  }catch(e){}
+}
+function hush(){if(hasTTS){try{speechSynthesis.cancel();}catch(e){}}}
+if(hasTTS){loadVoices();speechSynthesis.onvoiceschanged=loadVoices;setTimeout(loadVoices,700);setTimeout(()=>{voicesChecked=true;loadVoices();},2200);}
+
+/* =========================================================
+   7. TABLEAU DE BORD
+   ========================================================= */
+let hTab="rev";
+function renderHome(){
+  const total=W.length;
+  $("#h-sub").textContent="Le genre de "+total+" noms du métier d’enseignante : l’école, l’économie, la comptabilité.";
+  const p=plan();
+  const parts=[];
+  if(p.nRev)parts.push(p.nRev+" à revoir");
+  if(p.nNew)parts.push(pl(p.nNew,"nouveau","nouveaux"));
+  if(p.nCons)parts.push(p.nCons+" à consolider");
+  let planTxt;
+  if(parts.length>1)planTxt=p.ids.length+" mots : "+parts.join(", ")+".";
+  else planTxt=p.ids.length+" mots "+(p.nRev?"à revoir":p.nNew?"nouveaux":"à consolider")+".";
+  $("#h-plan").textContent=nb(planTxt);
+  $("#h-plan-note").textContent="Environ 5 minutes. Les mots ratés reviennent une dernière fois à la fin.";
+  $("#h-stage").textContent="Étape "+(store.unlocked+1)+" sur "+STAGES.length;
+  const s=streakInfo();let txt;
+  if(s.doneToday)txt="Séance faite aujourd’hui. Série : "+pl(s.n,"jour","jours")+" d’affilée.";
+  else if(s.n>0)txt="Série en cours : "+pl(s.n,"jour","jours")+". Fais une séance aujourd’hui pour la prolonger.";
+  else txt=store.days.length?"Commence une nouvelle série aujourd’hui.":"Première séance : 20 mots pour découvrir l’application.";
+  $("#h-streak").textContent=nb(txt);
+
+  let m=0,r=0,seen=0,okA=0,allA=0;
+  W.forEach(x=>{const st=status(x.id);if(st==="ok")m++;else if(st==="rev")r++;const y=store.w[x.id];if(y){okA+=y.ok||0;allA+=y.s||0;}});
+  const u=total-m-r;
+  $("#d-whole").innerHTML='<i class="k-ok" style="width:'+(m/total*100)+'%"></i><i class="k-rev" style="width:'+(r/total*100)+'%"></i>';
+  $("#d-whole").setAttribute("aria-label",m+" mots maîtrisés, "+r+" à revoir, "+u+" à découvrir, sur "+total);
+  $("#d-legend").innerHTML='<li><span class="sw k-ok"></span><b>'+m+'</b> maîtrisés</li><li><span class="sw k-rev"></span><b>'+r+'</b> à revoir</li><li><span class="sw"></span><b>'+u+'</b> à découvrir</li>';
+  $("#d-facts").textContent=allA?nb("Taux de bonnes réponses : "+Math.round(okA/allA*100)+" % sur "+pl(allA,"réponse","réponses")+", en "+pl(store.sessions,"séance","séances")+"."):"Les résultats apparaîtront ici après la première séance.";
+
+  $("#d-stages").innerHTML=STAGES.map((st,si)=>{
+    const ss=stageStats(si);const locked=si>store.unlocked;const done=si<store.unlocked||(si===STAGES.length-1&&ss.m>=ss.need);
+    const cls=locked?"locked":done?"done":"";
+    let stat;
+    if(locked){
+      if(si===store.unlocked+1){const prev=stageStats(si-1);const left=Math.max(0,prev.need-prev.m);stat="Se débloque à 80 % de l’étape "+si+" : encore "+pl(left,"mot","mots")+" à maîtriser.";}
+      else stat="Verrouillée";
+    }else{
+      stat=ss.m+" sur "+ss.n+" maîtrisés"+(ss.r?", "+ss.r+" à revoir":"")+(done?". Étape validée.":"");
+    }
+    return '<li class="stage '+cls+'"><span class="snum">'+(locked?ICON.lock:done?ICON.check:(si+1))+'<span class="sr">Étape '+(si+1)+'</span></span><div><p class="sname">'+esc(nb(st.name))+'</p><p class="suk" lang="uk">'+esc(st.uk)+'</p>'+(locked?'':'<div class="bar" role="img" aria-label="'+ss.m+' maîtrisés, '+ss.r+' à revoir, sur '+ss.n+'"><i class="k-ok" style="width:'+(ss.m/ss.n*100)+'%"></i><i class="k-rev" style="width:'+(ss.r/ss.n*100)+'%"></i><b class="goal" style="left:80%"></b></div>')+'<p class="sstat">'+esc(nb(stat))+'</p></div></li>';
+  }).join("");
+  renderWords();
+}
+function renderWords(){
+  const rev=W.filter(x=>status(x.id)==="rev").sort((a,b)=>(store.w[a.id].k-store.w[b.id].k)||a.w.localeCompare(b.w,"fr"));
+  const ok=W.filter(x=>status(x.id)==="ok").sort((a,b)=>(a.st-b.st)||a.w.localeCompare(b.w,"fr"));
+  $("#t-rev").textContent="À revoir ("+rev.length+")";$("#t-ok").textContent="Maîtrisés ("+ok.length+")";
+  $("#t-rev").setAttribute("aria-pressed",hTab==="rev");$("#t-ok").setAttribute("aria-pressed",hTab==="ok");
+  const L=hTab==="rev"?rev:ok;
+  if(!L.length){$("#d-words").innerHTML='<li class="empty">'+(hTab==="rev"?"Aucun mot à revoir pour le moment.":"Les mots maîtrisés apparaîtront ici.")+'</li>';return;}
+  $("#d-words").innerHTML=L.map(x=>{
+    const y=store.w[x.id];
+    return '<li class="wrow"><span class="wfr">'+defHTML(x)+(elides(x)?'<span class="mini g-'+x.g+'">'+(x.g==="m"?"m.":"f.")+'</span>':'')+'</span><span class="wuk" lang="uk">'+esc(x.uk)+'</span><span class="wside">'+(hTab==="rev"?dots(y.k)+'<span class="sr">'+y.k+' bonne(s) réponse(s) sur 3</span>':'')+'<button class="icon-btn sm" data-act="say" data-id="'+esc(x.id)+'" aria-label="Écouter '+esc(defPlain(x))+'">'+ICON.play+'</button></span></li>';
+  }).join("");
+}
+
+/* =========================================================
+   8. SÉANCE
+   ========================================================= */
+let S=null,answeredAt=0;
+function startSession(){
+  hush();
+  const p=plan();
+  store.sessions++;save();
+  S={ids:p.ids,kind:p.kind,i:0,phase:"main",ans:null,res:{},retry:[],ri:0,mastered:[],opened:[]};
+  show("session");renderS(false);
+}
+function curId(){return S.phase==="main"?S.ids[S.i]:S.retry[S.ri];}
+function renderTop(){
+  const segs=$("#s-segs");
+  if(S.phase==="main"){
+    $("#s-count").textContent="Mot "+(S.i+1)+" sur "+S.ids.length;
+    segs.innerHTML=S.ids.map((id,k)=>{const r=S.res[id];return '<span class="seg'+(r?(r.ok?" ok":" ko"):(k===S.i?" cur":""))+'"></span>';}).join("");
+  }else if(S.phase==="retry"){
+    $("#s-count").textContent="Deuxième chance : "+(S.ri+1)+" sur "+S.retry.length;
+    segs.innerHTML=S.retry.map((id,k)=>'<span class="seg'+(k<S.ri||(k===S.ri&&S.ans)?(S.retryRes[id]?" ok":" ko"):(k===S.ri?" cur":""))+'"></span>').join("");
+  }else{
+    const okN=S.ids.filter(id=>S.res[id]&&S.res[id].ok).length;
+    $("#s-count").textContent=S.phase==="end"?"Bilan de la séance":"Fin des 20 mots";
+    segs.innerHTML=S.ids.map(id=>'<span class="seg'+(S.res[id]&&S.res[id].ok?" ok":" ko")+'"></span>').join("");
+  }
+}
+function tagHTML(id){
+  if(S.phase==="retry")return '<span class="tag">Deuxième chance</span>';
+  const k=S.kind[id];
+  if(k==="new")return '<span class="tag">Nouveau mot</span>';
+  if(k==="rev"){let n=store.w[id].k;if(S.ans&&S.ans.info)n=S.ans.info.mastered?3:S.ans.info.k;return '<span class="tag">À revoir '+dots(n)+'</span>';}
+  return '<span class="tag">Révision</span>';
+}
+function ficheHTML(it,justAnswered){
+  const long=it.w.length>13?" long":"";
+  let word;
+  if(!S.ans)word='<span class="slot" aria-hidden="true"></span><span lang="fr">'+esc(it.w)+'</span><span class="sr">Article à choisir</span>';
+  else{const el=elides(it);word='<span class="slot on'+(el?" el":"")+'"><span class="'+(justAnswered?"stamp ":"")+'g-'+it.g+'">'+(el?"l’":defArt(it))+'</span></span><span lang="fr">'+esc(it.w)+'</span>';}
+  let h='<article class="fiche"><p class="fiche-cat"><span>'+esc(nb(STAGES[it.st].name))+'</span>'+tagHTML(it.id)+'</p>';
+  h+='<p class="fiche-word'+long+'">'+word+'</p>';
+  h+='<p class="fiche-uk" lang="uk">'+esc(it.uk)+'</p>';
+  if(S.ans){
+    h+='<p class="fiche-after">'+(hasIndef(it)?'<span>'+indefHTML(it)+'</span>':'')+'<span class="gchip g-'+it.g+'">'+gName(it.g)+'</span></p>';
+    if(it.o.a)h+='<p class="expand">'+esc(it.w)+' = '+esc(it.o.a)+'</p>';
+  }
+  return h+'</article>';
+}
+function ruleBlocks(it,ok){
+  const ri=ruleInfo(it);let h="";
+  if(!ri){
+    h+='<div class="blk"><p class="blk-h">Pas de règle fiable</p><p lang="uk">Для цього слова надійного правила немає: запам’ятовуйте його разом з артиклем — «'+esc(nbForm(hasIndef(it)?indefPlain(it):defPlain(it)))+'».</p></div>';
+  }else if(ri.key==="compose"){
+    h+='<div class="blk"><p class="blk-h">Règle <span class="formula">'+esc(nb("Mot composé : le genre vient de « "+ri.head+" »"))+'</span></p><p lang="uk">У складеному слові рід визначає головне слово «'+esc(ri.head)+'».'+(ri.sub?' '+sx(R[ri.sub].uk):'')+'</p></div>';
+  }else{
+    const d=R[ri.key];
+    h+='<div class="blk"><p class="blk-h">Règle <span class="formula">'+sx(nb(formula(ri.key)))+'</span></p><p lang="uk">'+sx(d.uk)+'</p></div>';
+  }
+  if(ri&&ri.exc){
+    const rk=ri.key==="compose"?ri.sub:ri.key;
+    h+='<div class="blk exc"><p class="blk-h">Exception</p><p lang="uk">Виняток із правила «'+sx(R[rk].s||"")+'»: очікували б '+UKN[ri.gExp]+' рід, але «'+esc(it.w)+'» — '+UKG[it.g]+'. Його треба запам’ятати окремо.</p></div>';
+  }
+  if(!ok&&elides(it)&&hasIndef(it)){
+    h+='<div class="blk"><p class="blk-h">Avec l’</p><p lang="uk">Перед голосною (або німим h) артикль скорочується до l’, тому рід не чути. Перевіряйте рід через un / une: «'+esc(nbForm(indefPlain(it)))+'».</p></div>';
+  }
+  if(!ok&&it.o.t){
+    const [uw,ug]=it.o.t;
+    const ukPart=ug==="p"?"українське «"+uw+"» вживається тільки в множині":"українською «"+uw+"» — "+UKG[ug];
+    h+='<div class="blk trap"><p class="blk-h">Piège pour l’ukrainien</p><p lang="uk">Пастка: '+esc(ukPart)+', а французьке слово '+esc(nbForm(defPlain(it)))+' — '+UKG[it.g]+'.</p></div>';
+  }
+  if(it.o.n)h+='<div class="blk"><p class="blk-h">À savoir</p><p lang="uk">'+esc(it.o.n)+'</p></div>';
+  return h;
+}
+function statusLine(it){
+  const a=S.ans;if(S.phase!=="main"||!a.info)return "";
+  const i=a.info;let t,d="";
+  if(a.ok){
+    if(i.was==="new")t="Mot maîtrisé du premier coup.";
+    else if(i.was==="rev"&&i.mastered)t="Mot maîtrisé : 3 bonnes réponses d’affilée. Il quitte la liste des mots à revoir.";
+    else if(i.was==="rev"){t="En révision : "+i.k+" bonne"+(i.k>1?"s":"")+" réponse"+(i.k>1?"s":"")+" d’affilée sur 3.";d=dots(i.k);}
+    else t="Toujours maîtrisé.";
+  }else{
+    if(i.was==="new")t="Ce mot passe en révision : il reviendra au début des prochaines séances jusqu’à 3 bonnes réponses d’affilée.";
+    else if(i.was==="rev")t="Le compteur repart à zéro : il faut 3 bonnes réponses d’affilée.";
+    else t="Ce mot repasse en révision.";
+    d=dots(0);
+  }
+  return '<p class="status">'+d+'<span>'+esc(nb(t))+'</span></p>';
+}
+function fbHTML(it){
+  const a=S.ans;
+  let h='<section class="fb '+(a.ok?"ok":"ko")+'" aria-live="polite">';
+  if(a.ok)h+='<p class="verdict">'+ICON.ok+'<span>Bonne réponse.</span></p>';
+  else h+='<p class="verdict">'+ICON.ko+'<span>'+esc(nb("Ce nom est "+gName(it.g)+" : "+defPlain(it)+"."))+'</span></p><p class="chose">'+esc(nb("Tu avais choisi « "+(a.g==="m"?"le / un":"la / une")+" »."))+'</p>';
+  h+=ruleBlocks(it,a.ok)+statusLine(it);
+  return h+'</section>';
+}
+const ANSWER_DOCK='<div class="answer"><button class="g-btn m" data-act="ans" data-g="m" aria-label="le, un : masculin"><span class="g-main">le / un</span><span class="g-sub">masculin</span></button><button class="g-btn f" data-act="ans" data-g="f" aria-label="la, une : féminin"><span class="g-main">la / une</span><span class="g-sub">féminin</span></button></div><p class="kbd">Clavier : <kbd>←</kbd> le / un, <kbd>→</kbd> la / une, <kbd>Entrée</kbd> mot suivant</p>';
+function renderS(justAnswered){
+  const body=$("#s-body"),dock=$("#s-dock");
+  renderTop();
+  if(S.phase==="main"||S.phase==="retry"){
+    const it=byId[curId()];
+    body.innerHTML=ficheHTML(it,justAnswered)+(S.ans?fbHTML(it):'<p class="instr">Choisis le genre de ce nom : masculin ou féminin.</p>');
+    fitWord();
+    if(!S.ans){dock.innerHTML=ANSWER_DOCK;}
+    else{
+      const lastMain=S.phase==="main"&&S.i===S.ids.length-1,lastRetry=S.phase==="retry"&&S.ri===S.retry.length-1;
+      const label=lastMain?"Continuer":lastRetry?"Voir le bilan":"Mot suivant";
+      dock.innerHTML='<div class="after"><button class="btn" data-act="say" data-id="'+esc(it.id)+'" aria-label="Écouter la prononciation">'+ICON.play+'</button><button class="btn ink grow big" data-act="next" id="b-next">'+label+'</button></div>';
+      const b=$("#b-next");if(b)b.focus({preventScroll:true});
+    }
+  }else if(S.phase==="inter"){
+    const n=S.retry.length;
+    body.innerHTML='<div class="inter"><h2 class="steptitle">Deuxième chance</h2><p>'+esc(nb("Tu as fini les 20 mots. Les "+pl(n,"mot raté revient","mots ratés reviennent")+" une dernière fois, pour fixer la bonne réponse."))+'</p><p class="small">Cette étape ne change pas tes résultats : un mot raté reste à revoir lors des prochaines séances.</p></div>';
+    dock.innerHTML='<div class="after"><button class="btn" data-act="skip">Passer</button><button class="btn ink grow big" data-act="go-retry">Revoir '+(n>1?"ces "+n+" mots":"ce mot")+'</button></div>';
+  }else{
+    body.innerHTML=endHTML();
+    dock.innerHTML='<div class="after"><button class="btn grow" data-act="home">Accueil</button><button class="btn ink grow big" data-act="start">Nouvelle séance</button></div>';
+  }
+  if(!justAnswered)window.scrollTo(0,0);
+}
+function fitWord(force){
+  const el=document.querySelector("#s-body .fiche-word");if(!el||!S)return;
+  if(S.ans&&S.fit&&!force){el.style.fontSize=S.fit.fs;el.style.whiteSpace=S.fit.ws;return;}
+  el.style.fontSize="";el.style.whiteSpace="nowrap";
+  let fs=parseFloat(getComputedStyle(el).fontSize),guard=0;
+  while(el.scrollWidth>el.clientWidth+1&&fs>22&&guard<60){fs-=1;el.style.fontSize=fs+"px";guard++;}
+  if(el.scrollWidth>el.clientWidth+1)el.style.whiteSpace="normal";
+  S.fit={fs:el.style.fontSize,ws:el.style.whiteSpace};
+}
+function endHTML(){
+  const okN=S.ids.filter(id=>S.res[id]&&S.res[id].ok).length,n=S.ids.length;
+  const wrong=S.ids.filter(id=>S.res[id]&&!S.res[id].ok);
+  let h='<div class="inter"><h2 class="steptitle">Séance terminée</h2><p class="score"><b>'+okN+'</b> sur '+n+' du premier coup</p>';
+  S.opened.forEach(si=>{h+='<div class="banner"><p><strong>Nouvelle étape débloquée</strong></p><p>'+esc(nb("Étape "+(si+1)+" : "+STAGES[si].name))+'. Ses mots arrivent dès la prochaine séance.</p></div>';});
+  if(S.mastered.length)h+='<h3>Mots désormais maîtrisés</h3><ul class="wlist">'+S.mastered.map(id=>{const x=byId[id];return '<li class="wrow"><span class="wfr">'+defHTML(x)+'</span><span class="wuk" lang="uk">'+esc(x.uk)+'</span></li>';}).join("")+'</ul>';
+  if(wrong.length){
+    h+='<h3>À revoir lors des prochaines séances</h3><ul class="wlist">'+wrong.map(id=>{const x=byId[id];const ri=ruleInfo(x);const f0=ri?(ri.key==="compose"?(ri.sub?formula(ri.sub):"mot composé"):formula(ri.key)):"à mémoriser";const f=ri&&ri.exc?"exception à la règle "+f0:f0;return '<li class="wrow"><span class="wfr">'+defHTML(x)+(elides(x)?'<span class="mini g-'+x.g+'">'+(x.g==="m"?"m.":"f.")+'</span>':'')+'</span><span class="wuk"><span lang="uk">'+esc(x.uk)+'</span> <span class="small">('+esc(nb(f))+')</span></span><span class="wside"><button class="icon-btn sm" data-act="say" data-id="'+esc(x.id)+'" aria-label="Écouter '+esc(defPlain(x))+'">'+ICON.play+'</button></span></li>';}).join("")+'</ul>';
+  }else h+='<p>Aucune erreur : tous les mots sont justes du premier coup. Bravo&nbsp;!</p>';
+  const s=streakInfo();h+='<p class="streak">Série : '+pl(s.n,"jour","jours")+' d’affilée.</p></div>';
+  return h;
+}
+function answer(g){
+  if(!S||S.ans||(S.phase!=="main"&&S.phase!=="retry"))return;
+  const id=curId(),it=byId[id],ok=g===it.g;let info=null;
+  if(S.phase==="main"){info=grade(id,ok);S.res[id]={ok,choice:g,info};if(info.mastered)S.mastered.push(id);}
+  else{S.retryRes[id]=ok;}
+  S.ans={g,ok,info};answeredAt=Date.now();
+  if(!ok&&navigator.vibrate){try{navigator.vibrate(30);}catch(e){}}
+  renderS(true);
+  if(store.settings.audio)speak(speechOf(it));
+}
+function finish(){S.opened=updateUnlocks();S.phase="end";}
+function next(){
+  if(!S||!S.ans)return;
+  if(Date.now()-answeredAt<380)return;
+  hush();S.ans=null;
+  if(S.phase==="main"){
+    S.i++;
+    if(S.i>=S.ids.length){S.retry=shuffle(S.ids.filter(id=>!S.res[id].ok));S.retryRes={};if(S.retry.length)S.phase="inter";else finish();}
+  }else if(S.phase==="retry"){S.ri++;if(S.ri>=S.retry.length)finish();}
+  renderS(false);
+}
+
+/* =========================================================
+   9. RÈGLES (page de référence)
+   ========================================================= */
+let rulesDone=false;
+function renderRules(){
+  if(rulesDone)return;rulesDone=true;
+  const byRule={};
+  W.forEach(x=>{const ri=ruleInfo(x);if(!ri)return;const k=ri.key==="compose"?ri.sub:ri.key;if(!k)return;(byRule[k]=byRule[k]||[]).push({x,exc:ri.exc});});
+  const item=k=>{
+    const d=R[k],L=byRule[k]||[];
+    const ex=L.filter(e=>!e.exc).slice(0,6).map(e=>showForm(e.x));
+    const exc=L.filter(e=>e.exc).map(e=>showForm(e.x));
+    const general=(d.ex||"").split(", ").filter(Boolean).filter(t=>!exc.some(e=>e===t||t.startsWith(e)));
+    const allExc=exc.concat(general);
+    return '<div class="ruleitem"><p class="ri-h"><span class="formula">'+sx(nb(d.fr||d.s))+'</span>'+(d.g&&!d.fr?'<span class="gchip g-'+d.g+'">'+(d.t?"souvent ":"")+gName(d.g)+'</span>':'')+'</p><p lang="uk">'+sx(d.uk)+'</p>'+(ex.length?'<p class="ri-ex"><span>Dans l’application : </span>'+esc(ex.join(", "))+'</p>':'')+(allExc.length?'<p class="ri-exc">Exceptions : '+esc(allExc.join(", "))+'</p>':'')+'</div>';
+  };
+  const FEM=["ion","aison","te","ee","ure","ance","ante","ise","esse","ette","elle","iere","aie","ie","ine","trice","euse","eurf","ite","ique"];
+  const MAS=["ment","age","isme","grec","teur","eurm","eacc","eau","oir","ail","eil","al","el","at","et","ier","if","ent","ard","ort","in","en","an","cle","aire","ice","o","u","ing"];
+  const SPEC=["sigle","abrev","saison","langue","anglais","value"];
+  let h='<p class="lead" lang="uk">Рід французького іменника найкраще вчити разом зі словом: не «facture», а «la facture», «une facture». Проте закінчення слова часто підказує рід. Нижче — найкорисніші правила з прикладами зі словника застосунку.</p>';
+  h+='<div class="tip"><p><b>Le, la, l’</b></p><p lang="uk">Перед голосною або німим h артикль скорочується до l’: l’évaluation, l’horaire. Рід тоді не чути — перевіряйте його через un / une: une évaluation, un horaire. Але перед «придиховим» h скорочення немає: la hausse, le hasard.</p></div>';
+  h+='<h2>Terminaisons féminines</h2>'+FEM.map(item).join("");
+  h+='<h2>Terminaisons masculines</h2>'+MAS.map(item).join("");
+  h+='<h2>Cas particuliers</h2>'+SPEC.map(item).join("");
+  h+='<div class="ruleitem"><p class="ri-h"><span class="formula">Mots composés : genre du nom principal</span></p><p lang="uk">У складеному слові рід визначає головний іменник, зазвичай перший: le chiffre d’affaires (chiffre), la pièce justificative (pièce), le pouvoir d’achat (pouvoir).</p></div>';
+  h+='<div class="ruleitem"><p class="ri-h"><span class="formula">Personnes : le genre suit la personne</span></p><p lang="uk">Для людей рід залежить від того, про кого йдеться: un élève / une élève, le stagiaire / la stagiaire, un collègue / une collègue. Багато слів мають дві форми: le directeur / la directrice, l’enseignant / l’enseignante, le client / la cliente. Про себе: «Je suis la stagiaire en comptabilité».</p></div>';
+  h+='<h2>Même mot, autre genre, autre sens</h2><p lang="uk">Ці слова змінюють значення разом з артиклем — у школі й бухгалтерії вони трапляються часто.</p><ul class="pairs">'+[
+    ["le mémoire","дипломна (магістерська) робота","la mémoire","пам’ять"],
+    ["le poste","посада; стаття балансу","la poste","пошта"],
+    ["le mode","спосіб (le mode de paiement)","la mode","мода"],
+    ["le solde","сальдо рахунку","la solde","платня військового"],
+    ["le livre","книга","la livre","фунт"],
+    ["le tour","оберт; черга","la tour","вежа"],
+    ["le manche","ручка (інструмента)","la manche","рукав"],
+    ["le cours","урок","la cour","подвір’я (інше слово, але звучить так само)"]
+  ].map(p=>'<li><span class="fr g-m">'+esc(p[0])+'</span> <span lang="uk">— '+esc(p[1])+'</span><br><span class="fr g-f">'+esc(p[2])+'</span> <span lang="uk">— '+esc(p[3])+'</span></li>').join("")+'</ul>';
+  $("#r-body").innerHTML=h;
+}
+
+/* =========================================================
+   10. RÉGLAGES ET SAUVEGARDE
+   ========================================================= */
+function fmtRate(x){return String(Math.round(x*100)/100).replace(".",",")+" ×";}
+function renderSettings(){
+  $("#o-audio").checked=!!store.settings.audio;
+  fillVoiceSelect();
+  $("#o-rate").value=store.settings.rate;$("#o-rate-val").textContent=fmtRate(store.settings.rate);
+}
+function exportCode(){
+  const data={app:"le-ou-la",v:1,w:store.w,sessions:store.sessions,days:store.days,unlocked:store.unlocked};
+  const code=btoa(unescape(encodeURIComponent(JSON.stringify(data))));
+  const ta=$("#o-code");ta.value=code;
+  const done=()=>toast("Code copié. Colle-le dans la même application sur l’autre appareil.");
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(code).then(done,()=>{ta.select();toast("Le code est affiché ci-dessous : sélectionne-le et copie-le.");});}
+  else{ta.select();try{document.execCommand("copy");done();}catch(e){toast("Le code est affiché ci-dessous : sélectionne-le et copie-le.");}}
+}
+function importCode(){
+  const raw=$("#o-code").value.trim();
+  if(!raw){toast("Colle d’abord un code de sauvegarde dans le champ.");return;}
+  try{
+    const o=JSON.parse(decodeURIComponent(escape(atob(raw))));
+    if(o.app!=="le-ou-la"||typeof o.w!=="object")throw new Error("format");
+    store.w=o.w;store.sessions=o.sessions||0;store.days=Array.isArray(o.days)?o.days:[];store.unlocked=Math.min(STAGES.length-1,o.unlocked||0);
+    save();updateUnlocks();$("#o-code").value="";
+    toast("Progression restaurée.");
+  }catch(e){toast("Ce code n’est pas valide : vérifie qu’il a été copié en entier.");}
+}
+let resetArm=null;
+function doReset(b){
+  if(!resetArm){b.textContent="Confirmer : tout effacer";b.classList.add("armed");resetArm=setTimeout(()=>{resetArm=null;b.textContent="Remettre la progression à zéro";b.classList.remove("armed");},4000);return;}
+  clearTimeout(resetArm);resetArm=null;
+  store.w={};store.sessions=0;store.days=[];store.unlocked=0;save();
+  b.textContent="Remettre la progression à zéro";b.classList.remove("armed");
+  toast("La progression a été remise à zéro.");
+}
+let toastT=null;
+function toast(msg){const t=$("#toast");t.textContent=nb(msg);t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>{t.hidden=true;},4500);}
+
+/* =========================================================
+   11. NAVIGATION ET ÉVÉNEMENTS
+   ========================================================= */
+const VIEWS=["home","session","rules","settings"];let curView="home";
+function show(v){
+  hush();curView=v;
+  VIEWS.forEach(k=>$("#v-"+k).classList.toggle("active",k===v));
+  if(v==="home"){S=null;renderHome();}
+  if(v==="rules")renderRules();
+  if(v==="settings")renderSettings();
+  window.scrollTo(0,0);
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-act]");if(!b||b.disabled)return;
+  const a=b.dataset.act;
+  switch(a){
+    case "start":startSession();break;
+    case "ans":answer(b.dataset.g);break;
+    case "next":next();break;
+    case "say":{const it=byId[b.dataset.id];if(it)speak(speechOf(it));break;}
+    case "go-retry":S.phase="retry";S.ri=0;S.ans=null;renderS(false);break;
+    case "skip":finish();renderS(false);break;
+    case "quit":case "home":show("home");break;
+    case "rules":show("rules");break;
+    case "settings":show("settings");break;
+    case "tab":hTab=b.dataset.tab;renderWords();break;
+    case "test":speak("Bonjour, je suis la nouvelle stagiaire en comptabilité.");break;
+    case "export":exportCode();break;
+    case "import":importCode();break;
+    case "reset":doReset(b);break;
+  }
+});
+document.addEventListener("keydown",e=>{
+  if(curView!=="session"||!S||e.repeat||e.altKey||e.ctrlKey||e.metaKey)return;
+  const k=e.key;
+  if(S.phase==="main"||S.phase==="retry"){
+    if(!S.ans){
+      if(k==="ArrowLeft"||k==="m"||k==="M"){e.preventDefault();answer("m");}
+      else if(k==="ArrowRight"||k==="f"||k==="F"){e.preventDefault();answer("f");}
+    }else if(k==="Enter"||k===" "){e.preventDefault();next();}
+  }else if(S.phase==="inter"&&(k==="Enter")){e.preventDefault();S.phase="retry";S.ri=0;renderS(false);}
+});
+document.addEventListener("change",e=>{
+  const id=e.target.id;
+  if(id==="o-audio"){store.settings.audio=e.target.checked;save();}
+  else if(id==="o-voice"){voice=voices.find(v=>v.voiceURI===e.target.value)||null;store.settings.voiceURI=voice?voice.voiceURI:null;save();}
+});
+document.addEventListener("input",e=>{
+  if(e.target.id==="o-rate"){store.settings.rate=parseFloat(e.target.value)||0.95;$("#o-rate-val").textContent=fmtRate(store.settings.rate);save();}
+});
+
+window.addEventListener("resize",()=>{if(curView==="session")fitWord(true);});
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(curView==="session")fitWord(true);});
+updateUnlocks();
+renderHome();
+if(!storageOK)toast("Attention : ce navigateur n’autorise pas l’enregistrement. La progression sera perdue à la fermeture de la page.");
+})();
+</script>
+</body>
+</html>
